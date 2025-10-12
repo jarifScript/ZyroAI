@@ -8,7 +8,7 @@ langchain-openai==0.0.2
 openai==1.7.0
 
 # YouTube & Web Scraping
-yt-dlp==2024.1.7
+yt-dlp
 requests==2.31.0
 beautifulsoup4==4.12.2
 
