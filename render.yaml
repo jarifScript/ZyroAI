@@ -4,12 +4,13 @@ services:
     env: python
     region: singapore
     plan: free
-    # REPLACE THE OLD BUILDCOMMAND WITH THIS SINGLE LINE:
+    # CRUCIAL: Replace "./build.sh" with this entire line
     buildCommand: "pyenv install 3.11.8 -s && pyenv global 3.11.8 && apt-get update && apt-get install -y tesseract-ocr tesseract-ocr-ben poppler-utils ffmpeg && pip install --upgrade pip && pip install -r requirements.txt && mkdir -p uploads"
     startCommand: "gunicorn app:app"
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.0 # This is a fallback and can remain
+      # CRITICAL: REMOVE the PYTHON_VERSION variable as it conflicts with pyenv.
+      # - key: PYTHON_VERSION
+      #   value: 3.11.0 
       - key: DEEPGRAM_API_KEY
         sync: false
       - key: OPENROUTER_API_KEY
