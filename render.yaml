@@ -1,1 +1,11 @@
-buildCommand: "pyenv install 3.11.8 -s && pyenv global 3.11.8 && ..."
+services:
+  - type: web
+    name: zyroai
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: DEEPGRAM_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
