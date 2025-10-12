@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Xyro</title>
+  
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!--
+  <link rel="stylesheet" href="xyro.css" type="text/css" media="all" />  -->
+  
+</head>
+<body>
+  <div class="container">
+    <div class="header">ZyroAI</div>
+    <div class="main"></div>
+    <div class="linear1">
+      <p>🔍 Choose Your Input Source</p>
+      <span class="scT">Content Source</span>
+      <div class="linbox1">
+        <button class="scWEB scB" onclick="cs_w()">
+          Website
+        </button>
+        <button class="scYT scB" onclick="cs_yt()">
+          YouTube
+        </button>
+        <button class="scPDF scB" onclick="cs_pdf()">
+          PDF
+        </button>
+        <button class="scV scB" onclick="cs_v()">
+          Video(mp4)
+        </button>
+        <button class="scA scB" onclick="cs_a()">
+          Audio(mp3)
+        </button>
+        <button class="scAD scB" onclick="cs_d()">
+          Any data file
+        </button>
+      </div>
+      <div class="linbox2">
+        <div class="ulb21">
+          <p class="sst" style="font-weight:bold; color:grey;">Select source type</p>
+          
+          <input type="file" id="fileInput" class="file_input" style="display:none"/>
+          <label for="fileInput" class="custom_file_label">
+            Select or Drop file
+            <p id="fileNameDisplay"></p>
+          </label>
+          <p class="process"></p>
+          
+        </div>
+        <div class="ulb22">
+          <input class="link_input" type="text" placeholder="Paste link here">
+          <button class="link_CB" onclick="link_fetch()"></button>
+        </div>
+      </div>
+      <p class="lb3T">Model</p>
+      <div class="linbox3">
+        <button class="lb3OA" onclick="M_OA()">
+          OpenAI
+        </button>
+        <button class="lb3CA" onclick="M_CA()">
+          Claude
+        </button>
+        <button class="lb3MT" onclick="M_MT()">
+          Mixtral
+        </button>
+        <button class="lb3GG" onclick="M_GG()">
+          Gemini
+        </button>
+        <button class="lb3best" onclick="M_best()">
+          Auto
+        </button>
+      </div>
+      <p class="lb4T">Voice(TTS)</p>
+      <div class="linbox4">
+        under development
+      </div>
+    </div>
+    <div class="footer">
+      <textarea id="input1" class="input1" placeholder="ask anything" enterkeyhint="enter"></textarea>
+      <div class="linear2">
+        <div class="linearLeft RL">
+          <button id="button1" class="button1">Agentic</button>
+          <button id="buttonModel" class="buttonModel">Model: llama-70b</button>
+        </div>
+        <div class="linearRight RL">
+          <button id="button2" class="button2" onclick="button2()">
+            <iframe class="gif_loading" src="https://lottie.host/embed/b89d5274-194b-4366-a095-9011a336e624/QWk3rwmMBK.lottie" frameborder="0"></iframe>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--accept=".pdf"-->
+  <script src="{{ url_for('static', filename='xyro01.js') }}"></script>
+  <script src="{{ url_for('static', filename='xyro02.js') }}"></script>
+  
+  
+  
+  <!--
+  <script src="xyro.js">xyro.js</script>
+  <script src="xyroOnClick.js">xyroOnClick.js</script>-->
+  
+</body>
+</html>
+
+
+<script>
+  // required variable for style
+  //document.querySelector(".ulb22").style.display = "none";
+  
+  // main
+  const button = document.querySelector('#button1'); // ID selector
+  const div = document.querySelector('.linear1'); // Class selector
+  div.style.display = 'none';
+  
+  button.addEventListener('click', () => {
+    if (div.style.display === 'none' || div.style.display === '') {
+      div.style.display = 'block'; // show div
+      button.style.backgroundColor = "#FFFFFF1C";
+    } else {
+      div.style.display = 'none'; // hide div
+      button.style.backgroundColor = "#3742B800";
+    }
+  });
+</script>
+
+<script>
+  const textarea = document.querySelector('.input1');
+  function autoResize() {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
+  textarea.addEventListener('input', autoResize);
+  // Resize once on page load
+  window.addEventListener('load', autoResize);
+</script>
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const fileNameDisplay = document.getElementById('fileNameDisplay');
+  //const sst = document.querySelector('.sst');
+
+fileInput.addEventListener('change', () => {
+  const files = fileInput.files;
+  if (files.length > 0) {
+    fileNameDisplay.textContent = `Selected file: ${files[0].name}`;
+    fileNameDisplay.style.color = "grey";
+    sst.style.display = "none";
+  } else {
+    fileNameDisplay.textContent = 'No file selected';
+  }
+});
+</script>
+
+
+    
