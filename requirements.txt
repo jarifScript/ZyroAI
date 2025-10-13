@@ -1,3 +1,4 @@
+--prefer-binary
 # Web Framework
 Flask==3.0.3
 gunicorn==22.0.0
@@ -20,7 +21,7 @@ openpyxl==3.1.5
 pandas==2.2.3
 #numpy==2.1.
 numpy==1.26.4
-pyarrow==17.0.0         # needed by new pandas
+#pyarrow==17.0.0         # needed by new pandas
 
 # Audio/Video Processing
 #openai-whisper==20231117
