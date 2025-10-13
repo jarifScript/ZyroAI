@@ -2,7 +2,7 @@
 Flask==3.0.3
 gunicorn==21.2.0
 
-# LangChain & AI
+# LangChain & openAI
 langchain==0.1.20
 langchain-openai==0.0.5
 openai==1.30.1
